@@ -11,7 +11,7 @@ const SignIn = () => {
 
   return (
     <div>
-      <h1>Sign in page</h1>
+      <h1 style={{textTransform:"capitalize"}}>Sign in page</h1>
       <button onClick={logGoogleUser}>Sign in with google popup</button>
     </div>
   );
