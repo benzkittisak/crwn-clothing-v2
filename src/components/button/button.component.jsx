@@ -13,8 +13,10 @@ const BUTTON_TYPES_CLASSES = {
 const Button = ({ children, buttonOptions }) => {
   return (
     <button
-      className={`button-container ${
-        BUTTON_TYPES_CLASSES[buttonOptions.buttonType ? buttonOptions.buttonType : ""]
+      className={`button ${
+        BUTTON_TYPES_CLASSES[
+          buttonOptions.button_style ? buttonOptions.button_style : null
+        ]
       }`}
       {...buttonOptions}
     >

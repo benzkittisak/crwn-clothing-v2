@@ -105,7 +105,7 @@ const SignUpForm = () => {
         />
 
         <Button type="submit" buttonOptions={{
-          buttonType:'google'
+          button_type:''
         }}>
           Sign Up
         </Button>
