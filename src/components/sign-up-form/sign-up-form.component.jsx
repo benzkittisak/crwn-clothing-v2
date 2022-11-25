@@ -4,6 +4,7 @@ import {
   createAuthUserWithEmailAndPassword,
   createUserDocmentFromAuth,
 } from "../../utils/firebase";
+import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 
 import "./sign-up-form.styles.scss";
@@ -103,7 +104,11 @@ const SignUpForm = () => {
           }}
         />
 
-        <button type="submit">Sign Up</button>
+        <Button type="submit" buttonOptions={{
+          buttonType:'google'
+        }}>
+          Sign Up
+        </Button>
       </form>
     </div>
   );
