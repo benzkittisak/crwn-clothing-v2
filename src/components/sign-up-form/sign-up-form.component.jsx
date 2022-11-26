@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocmentFromAuth,
-} from "../../utils/firebase";
+} from "../../utils";
 
 import { UserContext } from "../../contexts";
 
@@ -51,7 +51,7 @@ const SignUpForm = () => {
         password
       );
       setCurrentUser(user);
-      
+
       await createUserDocmentFromAuth(user, { displayName, photoURL }).then(
         () => resetFormField()
       );
