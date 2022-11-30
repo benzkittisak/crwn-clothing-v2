@@ -59,7 +59,6 @@ const SignInForm = () => {
         email,
         password
       );
-      setCurrentUser(user)
       resetFormField();
     } catch (error) {
       getErrorMessage(error);
