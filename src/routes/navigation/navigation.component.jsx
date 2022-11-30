@@ -25,7 +25,7 @@ const Navigation = () => {
             <Fragment>
               <div className="nav-user-section dropdown">
                 <img src={currentUser.photoURL} alt="" />
-                <span>{currentUser.displayName}</span>
+                <span>{currentUser.displayName.split(' ')[0]}</span>
                 <div className="dropdown-item">
                   <span onClick={signOutUser} className="nav-link">
                     sign out
