@@ -22,9 +22,17 @@ const Navigation = () => {
             SHOP
           </Link>
           {currentUser ? (
-            <span onClick={signOutUser} className="nav-link">
-              sign out
-            </span>
+            <Fragment>
+              <div className="nav-user-section dropdown">
+                <img src={currentUser.photoURL} alt="" />
+                <span>{currentUser.displayName}</span>
+                <div className="dropdown-item">
+                  <span onClick={signOutUser} className="nav-link">
+                    sign out
+                  </span>
+                </div>
+              </div>
+            </Fragment>
           ) : (
             <Link className="nav-link" to="/auth">
               sign in
