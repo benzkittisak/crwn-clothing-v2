@@ -55,12 +55,13 @@
         width: 200px;
         text-align: center;
         padding: 10px;
-        top: calc(10px + 100%);
+        top: calc(1px + 100%);
         right: 10px;
         border: 1px solid lightgray;
         border-bottom: 3px solid lightgray;
         transition: 400ms all ease-in-out;
         cursor: pointer;
+        z-index: 99;
 
         &:hover {
           background: whitesmoke;

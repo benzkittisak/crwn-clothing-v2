@@ -6,7 +6,10 @@ import { signOutUser } from "../../utils";
 
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 
+import CartIcon from "../../components/card-icon/card-icon.component";
+
 import "./navigation.styles.scss";
+import CartDropdown from "../../components/card-dropdown/card-dropdown.component";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -32,6 +35,8 @@ const Navigation = () => {
                   </span>
                 </div>
               </div>
+              <CartIcon />
+              
             </Fragment>
           ) : (
             <Link className="nav-link" to="/auth">
@@ -39,6 +44,7 @@ const Navigation = () => {
             </Link>
           )}
         </div>
+        <CartDropdown />
       </div>
       <Outlet />
     </Fragment>
