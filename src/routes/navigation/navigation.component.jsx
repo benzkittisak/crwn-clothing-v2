@@ -35,7 +35,7 @@ const Navigation = () => {
                   </span>
                 </div>
               </div>
-              <CartIcon />
+             
               
             </Fragment>
           ) : (
@@ -43,6 +43,7 @@ const Navigation = () => {
               sign in
             </Link>
           )}
+           <CartIcon />
         </div>
         <CartDropdown />
       </div>
