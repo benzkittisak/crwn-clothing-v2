@@ -1,7 +1,7 @@
 import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 
-import { UserContext } from "../../contexts";
+import { UserContext, CartContext } from "../../contexts";
 import { signOutUser } from "../../utils";
 
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
@@ -13,6 +13,7 @@ import CartDropdown from "../../components/card-dropdown/card-dropdown.component
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
+  const { isCartOpen } = useContext(CartContext);
 
   return (
     <Fragment>
@@ -28,24 +29,22 @@ const Navigation = () => {
             <Fragment>
               <div className="nav-user-section dropdown">
                 <img src={currentUser.photoURL} alt="" />
-                <span>{currentUser.displayName.split(' ')[0]}</span>
+                <span>{currentUser.displayName.split(" ")[0]}</span>
                 <div className="dropdown-item">
                   <span onClick={signOutUser} className="nav-link">
                     sign out
                   </span>
                 </div>
               </div>
-             
-              
             </Fragment>
           ) : (
             <Link className="nav-link" to="/auth">
               sign in
             </Link>
           )}
-           <CartIcon />
+          <CartIcon />
         </div>
-        <CartDropdown />
+        {isCartOpen ? <CartDropdown /> : null}
       </div>
       <Outlet />
     </Fragment>
