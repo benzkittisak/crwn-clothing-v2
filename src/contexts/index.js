@@ -1,3 +1,3 @@
 export * from './user.context';
-export * from './products.context';
+export * from './categories.context';
 export * from './cart.context';

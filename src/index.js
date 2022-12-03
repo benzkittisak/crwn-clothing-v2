@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
-import { CartProvider, ProductsProvider, UserProvider } from "./contexts/";
+import { CartProvider, CategoriesProvider, UserProvider } from "./contexts/";
 
 import "./index.scss";
 import App from "./App";
@@ -13,11 +13,11 @@ const root = createRoot(container);
 root.render(
   <BrowserRouter>
     <UserProvider>
-      <ProductsProvider>
+      <CategoriesProvider>
         <CartProvider>
           <App />
         </CartProvider>
-      </ProductsProvider>
+      </CategoriesProvider>
     </UserProvider>
   </BrowserRouter>
 );

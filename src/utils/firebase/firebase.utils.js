@@ -10,7 +10,16 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  collection,
+  writeBatch,
+  query,
+  getDocs
+} from "firebase/firestore";
 
 /**
  * doc คือ data ที่มันโหลดมาเสร็จแล้วแต่ถ้าจะเข้าถึงข้อมูลที่อยู่ใน firestore ต้องใช้ getDoc
@@ -112,3 +121,37 @@ export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
+
+/**
+ * สร้าง method ขึ้นมาเพื่อทำการอัปโหลดสินค้าของเราจาก shop-data.js ไปเก็บไว้ที่ firebase ทั้งหมด
+ *
+ * @param {*} collectionKey ชื่อของ collection ที่เราจะใช้
+ * @param {*} objectToAdd ตัวข้อมูลที่เราต้องการจะเพิ่มเข้าไปในตัว collection
+ */
+export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+
+  objectToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+
+  await batch.commit();
+  console.log("done");
+};
+
+// ดึงข้อมูลของ categories จาก firebase
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db , 'categories');
+  const q = query(collectionRef);
+
+  const querySnapshop = await getDocs(q);
+  const categoryMap = querySnapshop.docs.reduce((accumulator , docSnapshot) => {
+    const { title , items } = docSnapshot.data();
+    accumulator[title.toLowerCase()] = items;
+    return accumulator;
+  } , {});
+
+  return categoryMap;
+}
